@@ -1,0 +1,46 @@
+{
+  "name": "hapiblog",
+  "version": "1.0.0",
+  "description": "based on hapi framework blog system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/nodemon app.js",
+
+    "createdb:dev": "node_modules/.bin/sequelize db:create",
+    "createdb:prod": "node_modules/.bin/sequelize db:create --env production",
+    "createtable": "node_modules/.bin/sequelize db:migrate",
+    "createtableundo": "node_modules/.bin/sequelize db:migrate:undo:all",
+    "initdata": "node_modules/.bin/sequelize db:seed:all",
+    "initdataundo": "node_modules/.bin/sequelize db:seed:undo:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliyg/hapiblog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliyg/hapiblog/issues"
+  },
+  "homepage": "https://github.com/oliyg/hapiblog#readme",
+  "dependencies": {
+    "env2": "^2.2.2",
+    "hapi": "^16.6.3",
+    "hapi-swagger": "^7.10.0",
+    "inert": "^4.2.1",
+    "joi": "^13.6.0",
+    "mysql2": "^1.6.1",
+    "package": "^1.0.1",
+    "sequelize": "^4.38.1",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.4",
+    "sequelize-cli": "^4.1.1"
+  }
+}
