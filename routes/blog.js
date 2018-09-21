@@ -25,7 +25,7 @@ module.exports = [{
     description: '新增博客',
     validate: {
       headers: Joi.object({
-        authorization: Joi.string().max(100).required(),
+        authorization: Joi.string().max(500).required(),
       }).unknown(),
       payload: {
         // eg:
@@ -57,7 +57,7 @@ module.exports = [{
     description: '根据 id 删除博客',
     validate: {
       headers: Joi.object({
-        authorization: Joi.string().max(100).required(),
+        authorization: Joi.string().max(500).required(),
       }).unknown(),
       params: {
         blogId: Joi.number().min(1).required(),
