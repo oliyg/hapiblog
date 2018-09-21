@@ -12,6 +12,7 @@ const config = {
   define: {
     underscored: true,
   },
+  benchmark: true,
 };
 const db = {};
 

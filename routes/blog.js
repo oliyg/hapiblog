@@ -7,7 +7,7 @@ module.exports = [{
   method: 'GET',
   path: `/${GROUP_NAME}`,
   handler: async (request, reply) => {
-    const res = await modules.blog.findAll();
+    const res = await modules.blog.findAll({ attributes: { exclude: ['updated_at'] } });
     reply(res);
   },
   config: {
