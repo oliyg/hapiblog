@@ -1,3 +1,5 @@
+const { jwtHeaderDefine } = require('../../utils/router-helper');
+
 module.exports = (GROUP_NAME, options) => {
   const { Joi } = options;
   return {
@@ -8,11 +10,9 @@ module.exports = (GROUP_NAME, options) => {
     },
     config: {
       tags: ['api', GROUP_NAME],
-      description: '新增博客',
+      description: '新增文章',
       validate: {
-        headers: Joi.object({
-          authorization: Joi.string().max(500).required(),
-        }).unknown(),
+        ...jwtHeaderDefine,
         payload: {
         // eg:
         // {

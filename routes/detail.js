@@ -10,12 +10,13 @@ module.exports = [{
   },
   config: {
     tags: ['api', GROUP_NAME],
-    description: '根据日期和标题获取博客内容',
+    description: '根据日期和标题获取文章详情',
     validate: {
       params: {
         date: Joi.string().regex(/^\d{4}-\d{1,2}-\d{1,2}$/).required(), // eg: 2018-12-12 2017-1-1
         title: Joi.string().min(1).required(),
       },
     },
+    auth: false,
   },
 }];

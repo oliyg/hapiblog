@@ -12,11 +12,12 @@ module.exports = (GROUP_NAME, options) => ({
   },
   config: {
     tags: ['api', GROUP_NAME],
-    description: '获取博客列表',
+    description: '获取文章列表',
     validate: {
       query: {
         ...options.paginationDefine,
       },
     },
+    auth: false,
   },
 });

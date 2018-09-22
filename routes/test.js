@@ -9,6 +9,7 @@ module.exports = [{
   config: {
     tags: ['api', GROUP_NAME],
     description: '测试 GET',
+    auth: false,
   },
 }, {
   method: 'POST',
@@ -19,5 +20,6 @@ module.exports = [{
   config: {
     tags: ['api', GROUP_NAME],
     description: '测试 POST',
+    auth: false,
   },
 }];

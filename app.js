@@ -1,10 +1,12 @@
 const Hapi = require('hapi');
-const routesHelloHapi = require('./routes/hello-hapi');
+const hapiAuthJWT2 = require('hapi-auth-jwt2');
 const routesTest = require('./routes/test');
 const routesBlog = require('./routes/blog');
 const routesDetail = require('./routes/detail');
+const routesUser = require('./routes/user');
 const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const pluginHapiPagination = require('./plugins/hapi-pagination');
+const pluginHapiAuthJWT2 = require('./plugins/hapi-auth-jwt2');
 require('env2')('./.env');
 
 const { env } = process;
@@ -18,15 +20,17 @@ server.connection({
 const start = async () => {
   // 注册插件
   await server.register([
+    hapiAuthJWT2,
     ...pluginHapiSwagger,
     pluginHapiPagination,
   ]);
+  pluginHapiAuthJWT2(server);
   // 注册路由
   server.route([
     ...routesTest,
-    ...routesHelloHapi,
     ...routesBlog,
     ...routesDetail,
+    ...routesUser,
   ]);
   await server.start();
   console.log(`Server running at:${server.info.uri}`); // eslint-disable-line no-console

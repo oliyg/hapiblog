@@ -6,6 +6,14 @@ const paginationDefine = {
   page: Joi.number().integer().min(1).description('当前页码，默认 1'),
   pagination: Joi.boolean().description('是否开启分页功能，默认开启'),
 };
+
+const jwtHeaderDefine = {
+  headers: Joi.object({
+    authorization: Joi.string().max(200).required(),
+  }).unknown(),
+};
+
 module.exports = {
   paginationDefine,
+  jwtHeaderDefine,
 };
