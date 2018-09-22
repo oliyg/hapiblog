@@ -7,6 +7,7 @@ module.exports = (GROUP_NAME, options) => {
     method: 'POST',
     path: `/${GROUP_NAME}/signup`,
     handler: async (request, reply) => {
+      // todo ip 注册次数限制
       // 获取凭证
       const { username, passwd } = request.payload.userInfo;
 
@@ -23,7 +24,8 @@ module.exports = (GROUP_NAME, options) => {
           passwd: encryptedPasswd,
         });
         await newRes.save();
-        reply(newRes);
+        newRes.passwd = '';
+        reply([newRes]);
       }
     },
     config: {
