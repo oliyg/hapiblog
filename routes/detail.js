@@ -6,10 +6,10 @@ const GROUP_NAME = 'detail';
 
 module.exports = [{
   method: 'GET',
-  path: `/${GROUP_NAME}/{date}/{title}/{id}`, // data 和 title 为 SEO 优化
+  path: `/${GROUP_NAME}/{id}/{date}/{title}`, // data 和 title 为 SEO 优化
   handler: async (request, reply) => {
     const { id: blogId } = request.params;
-    const res = await models.blog.findOne({
+    const res = await models.blog.find({
       where: {
         id: blogId,
       },

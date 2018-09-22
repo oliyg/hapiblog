@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    short: {
+      type: DataTypes.STRING,
+    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,

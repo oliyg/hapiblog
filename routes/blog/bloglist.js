@@ -6,7 +6,7 @@ module.exports = (GROUP_NAME, options) => ({
     const { rows: results, count: totalCount } = await options.models.blog.findAndCountAll({
       limit: request.query.limit,
       offset: (request.query.page - 1) * request.query.limit,
-      attributes: { exclude: ['updated_at'] },
+      attributes: { exclude: ['updated_at', 'content'] },
     });
     reply({ results, totalCount });
   },

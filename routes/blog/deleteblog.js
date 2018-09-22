@@ -9,22 +9,14 @@ module.exports = (GROUP_NAME, options) => {
     handler: async (request, reply) => {
       const { blogId } = request.query;
       const { userId } = request.auth.credentials;
-      const res = await models.blog.findOne({
+      const res = await models.blog.destroy({
         where: {
           user_id: userId,
           id: blogId,
         },
       });
-      if (!res) {
-        reply(Boom.illegal('您无权删除其他人的文章'));
-      }
-      const newRes = await models.blog.destroy({
-        where: {
-          user_id: userId,
-          id: blogId,
-        },
-      });
-      reply(newRes);
+      if (!res) { reply(Boom.illegal('无法删除')); }
+      reply(res);
     },
     config: {
       tags: ['api', GROUP_NAME],
