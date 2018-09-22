@@ -30,6 +30,7 @@
   "homepage": "https://github.com/oliyg/hapiblog#readme",
   "dependencies": {
     "boom": "^7.2.0",
+    "dayjs": "^1.7.5",
     "env2": "^2.2.2",
     "hapi": "^16.6.3",
     "hapi-auth-jwt2": "^7.4.1",

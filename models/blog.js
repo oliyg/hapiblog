@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 const TABLE_NAME = 'blog';
 
 module.exports = (sequelize, DataTypes) => sequelize.define(
