@@ -1,4 +1,4 @@
-const TABLE_NAME = 'blog';
+const TABLE_NAME = 'user';
 
 module.exports = (sequelize, DataTypes) => sequelize.define(
   TABLE_NAME,
@@ -8,20 +8,12 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    title: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tag: {
+    passwd: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    count: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },

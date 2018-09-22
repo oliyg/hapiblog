@@ -5,8 +5,9 @@ module.exports = {
       autoIncrement: true,
       primaryKey: true,
     },
-    nick_name: Sequelize.STRING,
-    create_at: Sequelize.DATE,
+    username: Sequelize.STRING,
+    passwd: Sequelize.STRING,
+    created_at: Sequelize.DATE,
     updated_at: Sequelize.DATE,
   }),
 

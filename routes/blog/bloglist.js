@@ -3,7 +3,7 @@ module.exports = (GROUP_NAME, options) => ({
   path: `/${GROUP_NAME}`,
   handler: async (request, reply) => {
     // query: limit, page, pagination
-    const { rows: results, count: totalCount } = await options.modules.blog.findAndCountAll({
+    const { rows: results, count: totalCount } = await options.models.blog.findAndCountAll({
       limit: request.query.limit,
       offset: (request.query.page - 1) * request.query.limit,
       attributes: { exclude: ['updated_at'] },
