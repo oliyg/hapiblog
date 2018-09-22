@@ -11,7 +11,7 @@ module.exports = (GROUP_NAME, options) => {
       const { title, tag, content } = request.payload.newBlog;
       const tagStr = tag.join(';');
 
-      // 如果标题、作者以及创建日期都重复则拒绝提交
+      // todo 如果标题、作者以及创建日期都重复则拒绝提交
       const res = await models.blog.create({
         title, tag: tagStr, user_id: userId, content,
       });
