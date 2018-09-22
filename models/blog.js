@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     count: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
@@ -23,6 +27,12 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    created_at: {
+      type: DataTypes.DATE,
+    },
+    updated_at: {
+      type: DataTypes.DATE,
     },
   },
   {

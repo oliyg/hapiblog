@@ -1,12 +1,23 @@
+const dayjs = require('dayjs');
 const { jwtHeaderDefine } = require('../../utils/router-helper');
 
 module.exports = (GROUP_NAME, options) => {
-  const { Joi } = options;
+  const { Joi, models } = options;
   return {
     method: 'POST',
     path: `/${GROUP_NAME}`,
     handler: async (request, reply) => {
-      reply();
+      // 接收参数
+      const { userId } = request.auth.credentials;
+      const { title, tag, content } = request.payload.newBlog;
+      const tagStr = tag.join(';');
+
+      // 如果标题、作者以及创建日期都重复则拒绝提交
+      const res = await models.blog.create({
+        title, tag: tagStr, user_id: userId, content,
+      });
+      res.save();
+      reply(res);
     },
     config: {
       tags: ['api', GROUP_NAME],
@@ -14,16 +25,8 @@ module.exports = (GROUP_NAME, options) => {
       validate: {
         ...jwtHeaderDefine,
         payload: {
-        // eg:
-        // {
-        //   title: 'content title',
-        //   author: 'oliver',
-        //   tag: ['frot-end', 'database'],
-        //   content: '## subtitle > quote',
-        // }
           newBlog: Joi.object().keys({
             title: Joi.string().max(50).required(),
-            user_id: Joi.number().min(1).required(),
             tag: Joi.array().sparse(false).items(Joi.string()).unique()
               .max(10)
               .required(),
