@@ -10,5 +10,5 @@ const GROUP_NAME = 'blog';
 module.exports = [
   blogList(GROUP_NAME, { paginationDefine, models }),
   newBlog(GROUP_NAME, { Joi, models }),
-  deleteBlog(GROUP_NAME, { Joi }),
+  deleteBlog(GROUP_NAME, { Joi, models }),
 ];
