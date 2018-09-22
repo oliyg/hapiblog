@@ -17,7 +17,15 @@ module.exports = [{
     if (!res) {
       reply(Boom.notFound('资源请求失败'));
     }
-    reply(res);
+    const incCount = res.count + 1;
+    const newRes = await models.blog.update({ // 观看数量递增
+      count: incCount,
+    }, {
+      where: {
+        id: blogId,
+      },
+    });
+    reply(newRes);
   },
   config: {
     tags: ['api', GROUP_NAME],
