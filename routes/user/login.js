@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const Boom = require('boom');
 
 module.exports = (GROUP_NAME, options) => {
   const { JWT, Joi, models } = options;
@@ -33,7 +34,7 @@ module.exports = (GROUP_NAME, options) => {
           username,
         });
       } else {
-        reply();
+        reply(Boom.unauthorized('用户名或密码错误'));
       }
     },
     config: {
