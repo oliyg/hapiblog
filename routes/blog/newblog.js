@@ -23,7 +23,7 @@ module.exports = (GROUP_NAME, options) => {
         // }
           newBlog: Joi.object().keys({
             title: Joi.string().max(50).required(),
-            author: Joi.string().max(50).required(),
+            user_id: Joi.number().min(1).required(),
             tag: Joi.array().sparse(false).items(Joi.string()).unique()
               .max(10)
               .required(),
