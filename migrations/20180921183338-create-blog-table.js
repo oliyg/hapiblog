@@ -9,10 +9,6 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    author: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
     tag: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -20,6 +16,10 @@ module.exports = {
     count: {
       type: Sequelize.INTEGER,
       defaultValue: 0,
+    },
+    user_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
     },
     created_at: {
       type: Sequelize.DATE,
