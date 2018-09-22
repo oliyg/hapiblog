@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "node_modules/.bin/eslint .",
     "start": "node_modules/.bin/nodemon app.js",
     "createdb:dev": "node_modules/.bin/sequelize db:create",
     "createdb:prod": "node_modules/.bin/sequelize db:create --env production",
@@ -13,6 +14,9 @@
     "initdata": "node_modules/.bin/sequelize db:seed:all",
     "initdataundo": "node_modules/.bin/sequelize db:seed:undo:all"
   },
+  "pre-commit": [
+    "eslint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oliyg/hapiblog.git"
@@ -44,6 +48,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.4",
+    "pre-commit": "^1.2.2",
     "sequelize-cli": "^4.1.1"
   }
 }
