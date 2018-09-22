@@ -1,4 +1,3 @@
-const dayjs = require('dayjs');
 const { jwtHeaderDefine } = require('../../utils/router-helper');
 
 module.exports = (GROUP_NAME, options) => {
