@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const { paginationDefine } = require('../../utils/router-helper');
 const models = require('../../models');
-const getListByTag = require('./getlistbytag');
-const getListByTitle = require('./getlistbytitle');
-const getListByUserId = require('./getlistbyuserid');
+const getListByTag = require('./get-list-by-tag');
+const getListByTitle = require('./get-list-by-title');
+const getListByUserId = require('./get-list-by-userid');
 
 const GROUP_NAME = 'catalog';
 
