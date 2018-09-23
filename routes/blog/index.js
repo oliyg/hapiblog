@@ -4,6 +4,7 @@ const models = require('../../models');
 const blogList = require('./bloglist');
 const newBlog = require('./newblog');
 const deleteBlog = require('./deleteblog');
+const modifyBlog = require('./modifyblog');
 
 const GROUP_NAME = 'blog';
 
@@ -11,4 +12,5 @@ module.exports = [
   blogList(GROUP_NAME, { paginationDefine, models }),
   newBlog(GROUP_NAME, { Joi, models }),
   deleteBlog(GROUP_NAME, { Joi, models }),
+  modifyBlog(GROUP_NAME, { Joi, models }),
 ];

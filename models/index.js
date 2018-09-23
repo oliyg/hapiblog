@@ -13,6 +13,7 @@ const config = {
     underscored: true,
   },
   benchmark: true,
+  timezone: '+08:00',
 };
 const db = {};
 

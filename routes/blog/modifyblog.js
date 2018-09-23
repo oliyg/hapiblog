@@ -1,49 +1,42 @@
-const dayjs = require('dayjs');
-const Boom = require('boom');
-
 const { jwtHeaderDefine } = require('../../utils/router-helper');
 
 module.exports = (GROUP_NAME, options) => {
   const { Joi, models } = options;
   return {
-    method: 'POST',
+    method: 'PUT',
     path: `/${GROUP_NAME}`,
     handler: async (request, reply) => {
-      // 接收参数
+      const { blogId } = request.query;
       const { userId } = request.auth.credentials;
       const {
         title, tag, content, short,
-      } = request.payload.newBlog;
+      } = request.payload.modifyBlog;
       const tagStr = tag.join(';');
 
-      // 如果标题、作者以及创建日期都重复则拒绝提交
-      const res = await models.blog.findOne({
+      const res = await models.blog.update({
+        title,
+        tag: tagStr,
+        content,
+        short,
+        user_id: userId,
+      }, {
         where: {
           user_id: userId,
-          title,
+          id: blogId,
         },
       });
-      if (!res) {
-        const newRes = await models.blog.create({
-          title,
-          tag: tagStr,
-          short,
-          content,
-          user_id: userId,
-        });
-        reply(newRes);
-      }
-      if (dayjs(res.created_at).format('YYYY-MM-DD') === dayjs(new Date()).format('YYYY-MM-DD')) {
-        reply(Boom.conflict('今日已发送此篇文章，请修改内容后重试'));
-      }
+      reply(res);
     },
     config: {
       tags: ['api', GROUP_NAME],
-      description: '新增文章',
+      description: '根据 id 修改文章',
       validate: {
         ...jwtHeaderDefine,
+        query: {
+          blogId: Joi.number().min(1).required(),
+        },
         payload: {
-          newBlog: Joi.object().keys({
+          modifyBlog: Joi.object().keys({
             title: Joi.string().max(50).required(),
             tag: Joi.array().sparse(false).items(Joi.string()).unique()
               .max(10)

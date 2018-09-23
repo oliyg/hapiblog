@@ -1,4 +1,6 @@
-const timestamp = new Date();
+const dayjs = require('dayjs');
+
+const timestamp = dayjs(new Date()).format('YYYY-MM-DD HH-mm-ss');
 
 module.exports = {
   up: queryInterface => queryInterface.bulkInsert('blog', [{
