@@ -18,14 +18,14 @@ module.exports = [{
       reply(Boom.notFound('资源请求失败'));
     }
     const incCount = res.count + 1;
-    const newRes = await models.blog.update({ // 观看数量递增
+    await models.blog.update({ // 观看数量递增
       count: incCount,
     }, {
       where: {
         id: blogId,
       },
     });
-    reply(newRes);
+    reply(res);
   },
   config: {
     tags: ['api', GROUP_NAME],
