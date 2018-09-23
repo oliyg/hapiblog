@@ -1,10 +1,10 @@
 const dayjs = require('dayjs');
 const Boom = require('boom');
 
-const { jwtHeaderDefine } = require('../../utils/router-helper');
-
 module.exports = (GROUP_NAME, options) => {
-  const { Joi, models } = options;
+  const {
+    models, blogMetadataDefine, jwtHeaderDefine,
+  } = options;
   return {
     method: 'POST',
     path: `/${GROUP_NAME}`,
@@ -13,7 +13,7 @@ module.exports = (GROUP_NAME, options) => {
       const { userId } = request.auth.credentials;
       const {
         title, tag, content, short,
-      } = request.payload.newBlog;
+      } = request.payload.blogData;
       const tagStr = tag.join(';');
 
       // 如果标题、作者以及创建日期都重复则拒绝提交
@@ -42,16 +42,7 @@ module.exports = (GROUP_NAME, options) => {
       description: '新增文章',
       validate: {
         ...jwtHeaderDefine,
-        payload: {
-          newBlog: Joi.object().keys({
-            title: Joi.string().max(50).required(),
-            tag: Joi.array().sparse(false).items(Joi.string()).unique()
-              .max(10)
-              .required(),
-            content: Joi.string().min(10).max(60000).required(),
-            short: Joi.string().min(10).max(1000).required(),
-          }).required(),
-        },
+        payload: blogMetadataDefine,
       },
     },
   };

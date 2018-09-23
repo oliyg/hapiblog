@@ -2,7 +2,6 @@ const Hapi = require('hapi');
 const hapiAuthJWT2 = require('hapi-auth-jwt2');
 const routesTest = require('./routes/test');
 const routesBlog = require('./routes/blog');
-const routesDetail = require('./routes/detail');
 const routesUser = require('./routes/user');
 const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const pluginHapiPagination = require('./plugins/hapi-pagination');
@@ -29,7 +28,6 @@ const start = async () => {
   server.route([
     ...routesTest,
     ...routesBlog,
-    ...routesDetail,
     ...routesUser,
   ]);
   await server.start();

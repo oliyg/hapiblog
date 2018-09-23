@@ -1,13 +1,12 @@
 const Boom = require('boom');
-const { jwtHeaderDefine } = require('../../utils/router-helper');
 
 module.exports = (GROUP_NAME, options) => {
-  const { Joi, models } = options;
+  const { Joi, models, jwtHeaderDefine } = options;
   return {
     method: 'DELETE',
-    path: `/${GROUP_NAME}`,
+    path: `/${GROUP_NAME}/{id}`,
     handler: async (request, reply) => {
-      const { blogId } = request.query;
+      const { id: blogId } = request.params;
       const { userId } = request.auth.credentials;
       const res = await models.blog.destroy({
         where: {
@@ -23,8 +22,8 @@ module.exports = (GROUP_NAME, options) => {
       description: '根据 id 删除文章',
       validate: {
         ...jwtHeaderDefine,
-        query: {
-          blogId: Joi.number().min(1).required(),
+        params: {
+          id: Joi.number().min(1).required().description('需要删除的文章 id'),
         },
       },
     },
