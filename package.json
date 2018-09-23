@@ -35,6 +35,7 @@
     "hapi": "^16.6.3",
     "hapi-auth-jwt2": "^7.4.1",
     "hapi-pagination": "^1.22.0",
+    "hapi-redis": "^6.0.0",
     "hapi-swagger": "^7.10.0",
     "inert": "^4.2.1",
     "joi": "^13.6.0",

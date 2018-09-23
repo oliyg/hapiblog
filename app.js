@@ -6,6 +6,7 @@ const routesUser = require('./routes/user');
 const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const pluginHapiPagination = require('./plugins/hapi-pagination');
 const pluginHapiAuthJWT2 = require('./plugins/hapi-auth-jwt2');
+const pluginHapiRedis = require('./plugins/hapi-redis');
 require('env2')('./.env');
 
 const { env } = process;
@@ -22,6 +23,7 @@ const start = async () => {
     hapiAuthJWT2,
     ...pluginHapiSwagger,
     pluginHapiPagination,
+    pluginHapiRedis,
   ]);
   pluginHapiAuthJWT2(server);
   // 注册路由
