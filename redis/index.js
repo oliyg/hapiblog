@@ -9,6 +9,11 @@ module.exports = (request) => {
   const hmsetAsync = promisify(client.HMSET).bind(client);
 
   return {
-    client, getAsync, setAsync, hgetallAsync, hgetAsync, hmsetAsync,
+    client,
+    getAsync,
+    setAsync,
+    hgetallAsync,
+    hgetAsync,
+    hmsetAsync,
   };
 };
