@@ -68,6 +68,7 @@ const options = {
   routes: {
     include: [ // 注册支持分页
       '/blog',
+      '/catalog',
     ],
     exclude: [],
   },

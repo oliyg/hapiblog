@@ -1,8 +1,7 @@
 const Joi = require('joi');
 const Boom = require('boom');
-const { paginationDefine } = require('../../utils/router-helper');
+const { paginationDefine, blogMetadataDefine } = require('../../utils/router-helper');
 const { jwtHeaderDefine } = require('../../utils/router-helper');
-const { blogMetadataDefine } = require('../../utils/router-helper');
 const models = require('../../models');
 const getList = require('./getlist');
 const getDetail = require('./getdetail');

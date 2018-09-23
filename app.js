@@ -3,6 +3,7 @@ const hapiAuthJWT2 = require('hapi-auth-jwt2');
 const routesTest = require('./routes/test');
 const routesBlog = require('./routes/blog');
 const routesUser = require('./routes/user');
+const routesCatalog = require('./routes/catalog');
 const pluginHapiSwagger = require('./plugins/hapi-swagger');
 const pluginHapiPagination = require('./plugins/hapi-pagination');
 const pluginHapiAuthJWT2 = require('./plugins/hapi-auth-jwt2');
@@ -31,6 +32,7 @@ const start = async () => {
     ...routesTest,
     ...routesBlog,
     ...routesUser,
+    ...routesCatalog,
   ]);
   await server.start();
   console.log(`Server running at:${server.info.uri}`); // eslint-disable-line no-console
