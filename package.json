@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "node_modules/.bin/eslint .",
-    "start": "node_modules/.bin/nodemon app.js",
+    "start": "cross-env NODE_ENV=development node_modules/.bin/nodemon app.js",
+    "prod": "cross-env NODE_ENV=production node_modules/.bin/nodemon app.js",
     "createdb:dev": "node_modules/.bin/sequelize db:create",
     "createdb:prod": "node_modules/.bin/sequelize db:create --env production",
     "createtable": "node_modules/.bin/sequelize db:migrate",
@@ -30,6 +31,7 @@
   "homepage": "https://github.com/oliyg/hapiblog#readme",
   "dependencies": {
     "boom": "^7.2.0",
+    "cross-env": "^5.2.0",
     "dayjs": "^1.7.5",
     "env2": "^2.2.2",
     "good": "^7.3.0",
