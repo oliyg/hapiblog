@@ -3,10 +3,9 @@ const redis = require('../../redis');
 
 module.exports = (GROUP_NAME, options) => ({
   method: 'GET',
-  path: `/${GROUP_NAME}/title/{title}`,
+  path: `/${GROUP_NAME}/title`,
   handler: async (request, reply) => {
-    const { limit, page } = request.query;
-    const { title } = request.params;
+    const { limit, page, title } = request.query;
     const offset = (page - 1) * limit;
 
     // redis 缓存
@@ -37,8 +36,6 @@ module.exports = (GROUP_NAME, options) => ({
     validate: {
       query: {
         ...options.paginationDefine,
-      },
-      params: {
         title: options.Joi.string().max(100).required().description('title 名称'),
       },
     },

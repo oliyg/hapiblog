@@ -69,6 +69,9 @@ const options = {
     include: [ // 注册支持分页
       '/blog',
       '/catalog',
+      '/catalog/tag',
+      '/catalog/title',
+      '/catalog/author',
     ],
     exclude: [],
   },
