@@ -5,7 +5,7 @@ import { Component } from 'react'
 const listData = []
 for (let i = 0; i < 23; i++) {
   listData.push({
-    href: 'http://ant.design',
+    id: i,
     title: `ant design part ${i}`,
     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
@@ -40,7 +40,7 @@ export default class BlogList extends Component {
             // extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
           >
             <List.Item.Meta
-              title={<a href={item.href}>{item.title}</a>}
+              title={<a href={`/detail?id=${item.id}`}>{item.title}</a>}
               description={item.description}
             />
             {item.content}

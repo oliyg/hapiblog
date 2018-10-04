@@ -1,5 +1,7 @@
 import { Menu, Icon } from 'antd'
-import { Component } from 'react'
+import { Component, Fragment } from 'react'
+import Router, { withRouter } from 'next/router'
+import Link from 'next/link'
 
 class Nav extends Component {
   constructor(props) {
@@ -7,25 +9,45 @@ class Nav extends Component {
     this.state = {
       current: 'home',
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClickMenuItem = this.handleClickMenuItem.bind(this)
   }
 
-  handleClick(e) {
-    // console.log('click ', e)
+  componentWillMount(){
+    const route = this.props.router.route
+    this.setState({
+      current: route === '/' ? 'home' : route.slice(1)
+    })
+  }
+
+  handleClickMenuItem(e) {
     this.setState({
       current: e.key,
     })
+    switch (e.key) {
+    case 'home':
+      Router.push('/')
+      break
+    case 'tag':
+      Router.push('/tag')
+      break
+    default:
+      Router.push('/')
+      break
+    }
   }
 
   render() {
     return (
       <Menu
-        onClick={this.handleClick}
+        onClick={this.handleClickMenuItem}
         selectedKeys={[this.state.current]}
         mode="horizontal"
       >
         <Menu.Item key="home">
-          <Icon type="home" />主页
+          <Icon type="home" />
+          <Link prefetch href="/">
+            <Fragment>主页</Fragment>
+          </Link>
         </Menu.Item>
         <Menu.Item key="tag">
           <Icon type="tag" />标签
@@ -38,4 +60,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+export default withRouter(Nav)

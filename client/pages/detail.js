@@ -1,15 +1,23 @@
+import { Component } from 'react'
+import { withRouter } from 'next/router'
 import Layout from '../index'
-import Nav from '../components/nav'
+import Wrapper from '../components/wrapper'
 
 import '../asserts/styles.less'
 
-export default ({ url }) => {
-  return (
-    <Layout>
-      <Nav></Nav>
-      <h1>content detail page {url.query.id}</h1>
-      <h2>ex sub title</h2>
-      <p>testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.</p>
-    </Layout>
-  )
+class Detail extends Component {
+  render() {
+    const { router } = this.props
+    return (
+      <Layout>
+        <Wrapper>
+          <h1>content detail page {router.query.id}</h1>
+          <h2>ex sub title</h2>
+          <p>testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.testing of paragraph.</p>
+        </Wrapper>
+      </Layout>
+    )
+  }
 }
+
+export default withRouter(Detail)

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Nav from './components/nav'
 
 export default ({ children }) =>
   <div>
@@ -11,5 +12,6 @@ export default ({ children }) =>
       body {
       }
     `}</style>
+    <Nav></Nav>
     {children}
   </div>
