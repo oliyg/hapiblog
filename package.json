@@ -51,9 +51,10 @@
     "vision": "^4.1.1"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.4",
     "pre-commit": "^1.2.2",
     "sequelize-cli": "^4.1.1"
