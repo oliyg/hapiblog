@@ -30,7 +30,7 @@ export default class BlogList extends Component {
           onChange: (page) => {
             // console.log(page)
           },
-          pageSize: 3,
+          pageSize: 10,
         }}
         dataSource={listData}
         renderItem={item => (

@@ -30,6 +30,9 @@ class Nav extends Component {
     case 'tag':
       Router.push('/tag')
       break
+    case 'write':
+      Router.push('/write')
+      break
     default:
       Router.push('/')
       break
@@ -51,6 +54,9 @@ class Nav extends Component {
         </Menu.Item>
         <Menu.Item key="tag">
           <Icon type="tag" />标签
+        </Menu.Item>
+        <Menu.Item key="write">
+          <Icon type="form" />创建
         </Menu.Item>
         <Menu.Item key="github">
           <a href="https://github.com/oliyg" target="_blank">GitHub</a>
