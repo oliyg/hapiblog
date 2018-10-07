@@ -33,5 +33,8 @@ module.exports = (GROUP_NAME, options) => ({
       },
     },
     auth: false,
+    cors: {
+      origin: ['*'],
+    },
   },
 });
