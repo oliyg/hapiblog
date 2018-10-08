@@ -2,6 +2,10 @@
 
 基于 `hapi` 框架的博客系统，使用 jwt 鉴权，支持用户注册和登录，获取文章列表和文章详情。以 `redis` 作为缓存解决方案，使用 `mysql` 数据库和 `sequelize` 处理数据持久化。
 
+## 👕 DEMO
+
+[点击这里查看DEMO](https://hapiblog.oliyg.com/documentation)
+
 ## 🌈 支持的功能
 
 - 分页获取博客文章列表
